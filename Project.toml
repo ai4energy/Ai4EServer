@@ -3,13 +3,13 @@ Ai4EComponentLib = "9901752a-13b3-47c7-8fb4-ce17182539d9"
 Ai4EMetaPSE = "79c54b7b-7c25-4843-921b-9653a3bc153e"
 DifferentialEquations = "0c46a032-eb83-5123-abaf-570d42b7fbaa"
 HTTP = "cd3eb016-35fb-5094-929b-558a96fad6f3"
+JSON = "682c06a0-de6a-54ab-a142-c8b1cf79cde6"
 ModelingToolkit = "961ee093-0014-501f-94e3-6117800e7a78"
 
 [compat]
-DifferentialEquations = "7.5.0"
 Ai4EComponentLib = "0.4.1"
 Ai4EMetaPSE = "0.3.0"
+DifferentialEquations = "7.5.0"
 HTTP = "1.5.0"
 ModelingToolkit = "8.28.4"
 julia = "1.7"
-

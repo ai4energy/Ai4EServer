@@ -1,15 +1,16 @@
-using HTTP, ModelingToolkit, DifferentialEquations
-using Ai4EComponentLib, Ai4EMetaPSE
+using HTTP, JSON
+# using ModelingToolkit, DifferentialEquations
+# using Ai4EComponentLib, Ai4EMetaPSE
 
 function job(req::HTTP.Request)
-    # d = JSON.parse(String(req.body))
+    d = String(req.body)
     # if isa(d, String)
     #     d = JSON.parse(d)
     # end
     error_response = Dict()
     results = Dict()
     try
-        results = "Server run Suceessfully!"
+        results["Your Message"] = d
     catch e
         @error "Something went wrong in the Julia code!" exception = (e, catch_backtrace())
         error_response["error"] = sprint(showerror, e)
@@ -30,6 +31,6 @@ end
 # define REST endpoints to dispatch to "service" functions
 const ROUTER = HTTP.Router()
 
-HTTP.@register(ROUTER, "POST", "/job", job)
-HTTP.@register(ROUTER, "GET", "/health", health)
+HTTP.register!(ROUTER, "POST", "/job", job)
+HTTP.register!(ROUTER, "GET", "/health", health)
 HTTP.serve(ROUTER, "0.0.0.0", 8081)
