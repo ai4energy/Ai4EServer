@@ -20,7 +20,7 @@ RUN chmod +x bin/runtask
 USER genie
 
 # instantiate Julia packages
-RUN julia -e "using Pkg; Pkg.activate(\".\"); Pkg.instantiate(); Pkg.precompile(); "
+RUN julia ./ENV.jl
 
 # ports
 EXPOSE 8081
