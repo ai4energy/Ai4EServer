@@ -36,39 +36,6 @@ str = &quot;&quot;&quot;
 }
 &quot;&quot;&quot;
 res = HTTP.request(&quot;POST&quot;, &quot;http://127.0.0.1:8081/api/commonjson&quot;; body = str)
-String(res.body)</code></pre><pre><code class="language-powershell hljs">String(res.body) = &quot;{\&quot;State\&quot;:\&quot;Success\&quot;}&quot;</code></pre><pre><code class="language-julia hljs">using HTTP
-str = &quot;&quot;&quot;
-{
-    &quot;name&quot;: &quot;Name&quot;,
-    &quot;pkgs&quot;: [
-        &quot;ModelingToolkit&quot;,
-        &quot;DifferentialEquations&quot;
-    ],
-    &quot;variables&quot;: [
-        &quot;x(t) = 1.0&quot;,
-        &quot;y(t) = 1.0&quot;,
-        &quot;z(t) = 2.0&quot;
-    ],
-    &quot;parameters&quot;: [
-        &quot;σ = 1.0&quot;,
-        &quot;ρ = 3.0&quot;,
-        &quot;β = 5.0&quot; 
-    ],
-    &quot;equations&quot;: [
-        &quot;der(x) = σ*(y - x)&quot;,
-        &quot;der(y) = x*(ρ - z) - y&quot;,
-        &quot;der(z) = x*y - β*z&quot;
-    ],
-    &quot;u0&quot;: [
-        &quot;x =&gt; 1.0&quot;,
-        &quot;y =&gt; 2.0&quot;,
-        &quot;z =&gt; 3.0&quot;
-    ],
-    &quot;timespan&quot;: [0,1],
-    &quot;solver&quot;: &quot;Rosenbrock23&quot;
-}
-&quot;&quot;&quot;
-res = HTTP.request(&quot;POST&quot;, &quot;http://127.0.0.1:8081/api/commonjson&quot;; body = str)
 String(res.body)</code></pre><pre><code class="language-powershell hljs">String(res.body) = &quot;{\&quot;State\&quot;:\&quot;Success\&quot;}&quot;</code></pre><h3 id="API:-/api/modeljson"><a class="docs-heading-anchor" href="#API:-/api/modeljson">API: /api/modeljson</a><a id="API:-/api/modeljson-1"></a><a class="docs-heading-anchor-permalink" href="#API:-/api/modeljson" title="Permalink"></a></h3><pre><code class="language-julia hljs">using HTTP
 str = &quot;&quot;&quot;{
     &quot;name&quot;: &quot;Project Name&quot;,
@@ -374,4 +341,4 @@ str = &quot;&quot;&quot;{
 }&quot;&quot;&quot;
 
 res = HTTP.request(&quot;POST&quot;, &quot;http://127.0.0.1:8081/api/modeljson&quot;; body = str)
-String(res.body)</code></pre><pre><code class="language-powershell hljs">String(res.body) = &quot;{\&quot;State\&quot;:\&quot;Success\&quot;}&quot;</code></pre></article><nav class="docs-footer"><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 0.27.23 on <span class="colophon-date" title="Sunday 23 October 2022 09:07">Sunday 23 October 2022</span>. Using Julia version 1.8.2.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
+String(res.body)</code></pre><pre><code class="language-powershell hljs">String(res.body) = &quot;{\&quot;State\&quot;:\&quot;Success\&quot;}&quot;</code></pre></article><nav class="docs-footer"><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 0.27.23 on <span class="colophon-date" title="Sunday 23 October 2022 09:19">Sunday 23 October 2022</span>. Using Julia version 1.8.2.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
