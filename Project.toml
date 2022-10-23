@@ -1,16 +1,29 @@
+name = "Ai4EServer"
+uuid = "5952c67a-4385-4827-9e54-e70d40c7e615"
+authors = ["jake484 <522432938@qq.com>"]
+version = "0.1.0"
+
 [deps]
 Ai4EComponentLib = "9901752a-13b3-47c7-8fb4-ce17182539d9"
 Ai4EMetaPSE = "79c54b7b-7c25-4843-921b-9653a3bc153e"
+Dates = "ade2ca70-3891-5945-98fb-dc099432e06a"
 DifferentialEquations = "0c46a032-eb83-5123-abaf-570d42b7fbaa"
+Documenter = "e30172f5-a6a5-5a46-863b-614d45cd2de4"
+Genie = "c43c736e-a2d1-11e8-161f-af95117fbd1e"
+GenieDeployDocker = "a082159f-dd50-4f6d-a3c5-00c38fd36577"
 HTTP = "cd3eb016-35fb-5094-929b-558a96fad6f3"
+Inflector = "6d011eab-0732-4556-8808-e463c76bf3b6"
 JSON = "682c06a0-de6a-54ab-a142-c8b1cf79cde6"
+Logging = "56ddb016-857b-54e1-b83d-db4d58db5568"
 ModelingToolkit = "961ee093-0014-501f-94e3-6117800e7a78"
+Pkg = "44cfe95a-1eb2-52ea-b672-e2afdf69b78f"
 
 [compat]
 Ai4EComponentLib = "0.4.1"
-Ai4EMetaPSE = "0.3.0"
+Ai4EMetaPSE = "0.3.2"
 DifferentialEquations = "7.5.0"
 HTTP = "1.5.0"
 JSON = "0.21.3"
 ModelingToolkit = "8.28.4"
-julia = "1.7"
+Pkg = "1.8.0"
+julia = "1.8"
