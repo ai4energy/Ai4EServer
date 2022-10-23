@@ -1,5 +1,5 @@
 # pull latest julia image
-FROM --platform=linux/amd64 julia:latest
+FROM --platform=linux/amd64 julia:1.8
 
 # create dedicated user
 RUN useradd --create-home --shell /bin/bash genie
@@ -24,7 +24,6 @@ RUN julia ./ENV.jl
 
 # ports
 EXPOSE 8081
-EXPOSE 80
 
 # set up app environment
 ENV JULIA_DEPOT_PATH "/home/genie/.julia"
