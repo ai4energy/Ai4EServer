@@ -1,17 +1,5 @@
 # Ai4EServer
 
-## Get
+基于Genie.jl的WEB框架，作为Ai4E的后端提供服务。
 
-To test if the server works well.
-
-URL: **121.40.92.145:8081/health**
-
-![fig1](assets/get.png)
-
-## Post
-
-To parse the json string and calculate, and return result in json format.
-
-URL: **121.40.92.145:8081/job**
-
-![fig1](assets/post.png)
+更多信息[点击文档](https://ai4energy.github.io/Ai4EServer/)查看。

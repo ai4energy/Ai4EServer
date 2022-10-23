@@ -12,7 +12,6 @@ Document for [Ai4EServer](https://github.com/jake484/Ai4EServer).
 |POST    | /api/commonjson | 计算CommonJson格式的JSON文件|
 |POST    | /api/componentjson | 计算ComponentJson格式的JSON文件|
 
-
 ## Examples
 
 ### API: /health
@@ -40,47 +39,6 @@ String(res.body) = "{\"Your Message\":\"{\\\"name\\\":\\\"Hello\\\"}\"}"
 ```
 
 ### API: /api/commonjson
-
-```julia
-using HTTP
-str = """
-{
-    "name": "Name",
-    "pkgs": [
-        "ModelingToolkit",
-        "DifferentialEquations"
-    ],
-    "variables": [
-        "x(t) = 1.0",
-        "y(t) = 1.0",
-        "z(t) = 2.0"
-    ],
-    "parameters": [
-        "σ = 1.0",
-        "ρ = 3.0",
-        "β = 5.0" 
-    ],
-    "equations": [
-        "der(x) = σ*(y - x)",
-        "der(y) = x*(ρ - z) - y",
-        "der(z) = x*y - β*z"
-    ],
-    "u0": [
-        "x => 1.0",
-        "y => 2.0",
-        "z => 3.0"
-    ],
-    "timespan": [0,1],
-    "solver": "Rosenbrock23"
-}
-"""
-res = HTTP.request("POST", "http://127.0.0.1:8081/api/commonjson"; body = str)
-String(res.body)
-```
-
-```powershell
-String(res.body) = "{\"State\":\"Success\"}"
-```
 
 ```julia
 using HTTP
