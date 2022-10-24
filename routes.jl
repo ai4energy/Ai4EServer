@@ -10,13 +10,14 @@ route("/health", method=GET) do
 end
 
 route("/job", method=POST) do
-  JSON.json(Dict("Your Message" => rawpayload()))
+  rawpayload()
 end
 
 route("/api/commonjson", method=POST) do
   error_response = Dict()
   results = Dict()
   try
+    @show rawpayload()
     jsonString = rawpayload()
     res = calcu(jsonString)
     results["State"] = string(res.retcode)
@@ -37,6 +38,7 @@ route("/api/modeljson", method=POST) do
   error_response = Dict()
   results = Dict()
   try
+    @show rawpayload()
     jsonString = rawpayload()
     res = calcu_model(jsonString)
     results["State"] = string(res.retcode)
