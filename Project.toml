@@ -20,7 +20,7 @@ Pkg = "44cfe95a-1eb2-52ea-b672-e2afdf69b78f"
 
 [compat]
 Ai4EComponentLib = "0.4.1"
-Ai4EMetaPSE = "0.3.3"
+Ai4EMetaPSE = "0.3.4"
 DifferentialEquations = "7.5.0"
 HTTP = "1.5.0"
 JSON = "0.21.3"
