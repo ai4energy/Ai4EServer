@@ -1,3 +1,5 @@
+include("solutionHandle.jl")
+
 using Ai4EMetaPSE
 import Ai4EMetaPSE: getscript
 
@@ -16,8 +18,14 @@ function calcu(jsonStrings::String)
     return res
 end
 
-function calcu_model(jsonStrings::String)
+function calcu_model(jsonStrings::String, name::String="Project_Name")
     s = getscript(generatecode(jsonStrings, ModelJson()))
-    res = closureModelJson.eval(s)
-    return res
+    sol = closureModelJson.eval(s)
+    res = closureModelJson.eval(solutionHandle(name))
+    return (res, sol)
 end
+
+# s = read("test/testCode.jl", String)
+# ex = Meta.parse(s)
+# sol = closureModelJson.eval(ex)
+# res = closureModelJson.eval(solutionHandle("Project_Name"))
