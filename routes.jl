@@ -1,5 +1,5 @@
 using Genie.Router, Genie.Requests
-using JSON
+using JSON, Dates
 
 route("/") do
   serve_static_file("index.html")
@@ -17,7 +17,7 @@ route("/api/commonjson", method=POST) do
   error_response = Dict()
   results = Dict()
   try
-    @show rawpayload()
+    @info string(now()) * "  /api/commonjson to handle" rawpayload()
     jsonString = rawpayload()
     res = calcu(jsonString)
     results["State"] = string(res.retcode)
@@ -38,10 +38,12 @@ route("/api/modeljson", method=POST) do
   error_response = Dict()
   results = Dict()
   try
-    @show rawpayload()
+    @info string(now()) * "  /api/modeljson to handle" rawpayload()
     jsonString = rawpayload()
-    res = calcu_model(jsonString)
+    name = replace(JSON.parse(jsonString)["name"], " " => "_")
+    (res, sol) = calcu_model(jsonString, name)
     results["State"] = string(res.retcode)
+    results["data"] = res
   catch e
     @error "Something went wrong in the Julia code!" exception = (e, catch_backtrace())
     error_response["error"] = sprint(showerror, e)
