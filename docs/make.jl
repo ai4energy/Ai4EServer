@@ -1,5 +1,5 @@
 using Documenter
-
+DocMeta.setdocmeta!(Ai4EComponentLib, :DocTestSetup, :(using Ai4EServer); recursive=true)
 makedocs(;
     sitename="Ai4EServer",
     pages=[
@@ -10,5 +10,4 @@ makedocs(;
 deploydocs(;
     repo="github.com/ai4energy/Ai4EServer.git",
     devbranch="main",
-    versions = nothing
 )
