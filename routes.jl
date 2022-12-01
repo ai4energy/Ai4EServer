@@ -42,7 +42,8 @@ route("/api/modeljson", method=POST) do
     jsonString = rawpayload()
     name = replace(JSON.parse(jsonString)["name"], " " => "_")
     (res, sol) = calcu_model(jsonString, name)
-    results["State"] = string(res.retcode)
+    results["state"] = string(sol.retcode)
+    results["code"] = 200
     results["data"] = res
   catch e
     @error "Something went wrong in the Julia code!" exception = (e, catch_backtrace())
