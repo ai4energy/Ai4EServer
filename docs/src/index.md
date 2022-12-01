@@ -383,7 +383,7 @@ str = """{
     "u0": [],
     "timespan": [
         0,
-        0
+        1
     ],
     "solver": "Rosenbrock23"
 }"""
