@@ -1,7 +1,7 @@
 name = "Ai4EServer"
 uuid = "5952c67a-4385-4827-9e54-e70d40c7e615"
 authors = ["jake484 <522432938@qq.com>"]
-version = "0.1.1"
+version = "0.2.0"
 
 [deps]
 Ai4EComponentLib = "9901752a-13b3-47c7-8fb4-ce17182539d9"
