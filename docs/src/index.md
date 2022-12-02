@@ -10,7 +10,7 @@ Document for [Ai4EServer](https://github.com/ai4energy/Ai4EServer).
 |GET     | /health  | 测试API状态|
 |POST    | /job      | 直接返回POST提交内容 |
 |POST    | /api/modeljson | 计算ModelJson格式的JSON文件|
-|POST    | /api/getResult | 获得最新一次计算的结果 |
+|GET    | /api/getResult | 获得最新一次计算的结果 |
 
 ## Examples
 
