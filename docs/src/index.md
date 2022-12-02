@@ -1,6 +1,6 @@
 # Ai4EServer
 
-Document for [Ai4EServer](https://github.com/jake484/Ai4EServer).
+Document for [Ai4EServer](https://github.com/ai4energy/Ai4EServer).
 
 ## Ai4EServer API
 

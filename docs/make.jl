@@ -10,4 +10,5 @@ makedocs(;
 deploydocs(;
     repo="github.com/ai4energy/Ai4EServer.git",
     devbranch="main",
+    versions = nothing
 )
