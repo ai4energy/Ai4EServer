@@ -9,8 +9,8 @@ Document for [Ai4EServer](https://github.com/jake484/Ai4EServer).
 |GET     | /  | API列表与示例|
 |GET     | /health  | 测试API状态|
 |POST    | /job      | 直接返回POST提交内容 |
-|POST    | /api/commonjson | 计算CommonJson格式的JSON文件|
-|POST    | /api/componentjson | 计算ComponentJson格式的JSON文件|
+|POST    | /api/modeljson | 计算ModelJson格式的JSON文件|
+|POST    | /api/getResult | 获得最新一次计算的结果 |
 
 ## Examples
 
