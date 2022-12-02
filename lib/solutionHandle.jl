@@ -1,3 +1,5 @@
+solutionHandle() = Symbol("resDict")
+
 function solutionHandle(name::String)
     return quote
         varNames = map(ModelingToolkit.getmetadata.(states(Model), ModelingToolkit.VariableSource)) do x

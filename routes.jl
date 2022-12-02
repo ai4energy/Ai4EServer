@@ -34,6 +34,29 @@ route("/api/commonjson", method=POST) do
   end
 end
 
+route("/api/getResult", method=GET) do
+  error_response = Dict()
+  results = Dict()
+  try
+    @info string(now()) * "  /api/getResult"
+    res = getLatestReslut()
+    results["status"] = "Success"
+    results["code"] = 200
+    results["data"] = res
+  catch e
+    @error "Something went wrong in the Julia code!" exception = (e, catch_backtrace())
+    error_response["error"] = sprint(showerror, e)
+  end
+
+  if isempty(error_response)
+    return JSON.json(results)
+  else
+    @info "An error occured in the Julia code."
+    return JSON.json(error_response)
+  end
+  JSON.json(Dict("Julia-API" => "healthy!"))
+end
+
 route("/api/modeljson", method=POST) do
   error_response = Dict()
   results = Dict()
@@ -42,7 +65,7 @@ route("/api/modeljson", method=POST) do
     jsonString = rawpayload()
     name = replace(JSON.parse(jsonString)["name"], " " => "_")
     (res, sol) = calcu_model(jsonString, name)
-    results["state"] = string(sol.retcode)
+    results["status"] = string(sol.retcode)
     results["code"] = 200
     results["data"] = res
   catch e

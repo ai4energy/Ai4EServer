@@ -25,6 +25,10 @@ function calcu_model(jsonStrings::String, name::String="Project_Name")
     return (res, sol)
 end
 
+function getLatestReslut()
+    return closureModelJson.eval(solutionHandle())
+end
+
 # s = read("test/testCode.jl", String)
 # ex = Meta.parse(s)
 # sol = closureModelJson.eval(ex)
