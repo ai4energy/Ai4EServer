@@ -1,5 +1,9 @@
 using Genie.Router, Genie.Requests
 using JSON, Dates
+using HTTP
+
+Genie.config.run_as_server = true
+Genie.config.cors_allowed_origins = ["*"]
 
 route("/") do
   serve_static_file("index.html")
