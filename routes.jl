@@ -1,5 +1,15 @@
 using Genie.Router, Genie.Requests
 using JSON, Dates
+using HTTP
+
+const CORS_RES_HEADERS = [
+    "Access-Control-Allow-Origin" => "*",
+    "Access-Control-Allow-Headers" => "*",
+    "Access-Control-Allow-Methods" => "POST, GET, OPTIONS"
+]
+
+Genie.config.cors_allowed_origins = ["*"]
+Genie.config.cors_headers = Dict(CORS_RES_HEADERS)
 
 route("/") do
   serve_static_file("index.html")
