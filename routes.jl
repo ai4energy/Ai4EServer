@@ -77,7 +77,7 @@ route("/api/modeljson", method=POST) do
     (res, sol) = calcu_model(jsonString, name)
     results["status"] = string(sol.retcode)
     results["code"] = 200
-    results["data"] = res
+    # results["data"] = res
   catch e
     @error "Something went wrong in the Julia code!" exception = (e, catch_backtrace())
     error_response["error"] = sprint(showerror, e)
