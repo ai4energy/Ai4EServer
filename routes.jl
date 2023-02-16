@@ -1,11 +1,11 @@
 using Genie.Router, Genie.Requests
 using JSON, Dates
-using HTTP
+using HTTP, HTTP.WebSockets
 
 const CORS_RES_HEADERS = [
-    "Access-Control-Allow-Origin" => "*",
-    "Access-Control-Allow-Headers" => "*",
-    "Access-Control-Allow-Methods" => "POST, GET, OPTIONS"
+  "Access-Control-Allow-Origin" => "*",
+  "Access-Control-Allow-Headers" => "*",
+  "Access-Control-Allow-Methods" => "POST, GET, OPTIONS"
 ]
 
 Genie.config.cors_allowed_origins = ["*"]
@@ -89,4 +89,90 @@ route("/api/modeljson", method=POST) do
     @info "An error occured in the Julia code."
     return JSON.json(error_response)
   end
+end
+
+task = @async WebSockets.listen("0.0.0.0", 8082) do ws
+  global client = ws
+  for msg in ws
+    !isempty(msg) ? send(ws, "Hello, you said: $msg") : nothing
+  end
+end
+
+route("/foo/bar") do
+  results = Dict()
+  jsonString = """{
+    "name": "Lithium battery",
+    "pkgs": [
+        "ModelingToolkit",
+        "DifferentialEquations",
+        "Ai4EComponentLib.Electrochemistry"
+    ],
+    "components": [
+        {
+            "name": "batter",
+            "type": "Lithium_ion_batteries",
+            "args": {}
+        },
+        {
+            "name": "Pv",
+            "type": "PhotovoltaicCell",
+            "args": {}
+        },
+        {
+            "name": "ground",
+            "type": "Ground",
+            "args": {}
+        }
+    ],
+    "connections": [
+        [
+            "batter.p",
+            "Pv.p"
+        ],
+        [
+            "batter.n",
+            "Pv.n",
+            "ground.g"
+        ]
+    ],
+    "u0": [
+        "batter.v_f => 0.5",
+        "batter.v_s => 0.5",
+        "batter.v_soc => 0.5"
+    ],
+    "timespan": [
+        0.0,
+        36000.0,
+        1.0
+    ],
+    "solver": "Rosenbrock23"
+    }"""
+  name = replace(JSON.parse(jsonString)["name"], " " => "_")
+  (res, sol) = calcu_model(jsonString, name)
+  results["status"] = string(sol.retcode)
+  results["code"] = 200
+end
+
+route("/foo/car") do
+  s = quote
+    include("./lib/Ai4ESimulatorLogger.jl")
+    @logmsg LogLevel(-1) "ODESystem" _id = :OrdinaryDiffEq status = "正在加载科学计算库！" progress = "none"    #= none:1 =#
+    sleep(1)
+    using JSON
+    using DifferentialEquations
+    @logmsg LogLevel(-1) "ODESystem" _id = :OrdinaryDiffEq status = "正在构建数学模型！" progress = "none"    #= none:1 =#
+    sleep(2)
+    @logmsg LogLevel(-1) "ODESystem" _id = :OrdinaryDiffEq status = "正在简化模型！" progress = "none"    #= none:1 =#
+    sleep(2)
+    solve(
+      ODEProblem((u, p, t) -> (sleep(0.01); -u), 1.0, nothing),
+      Euler();
+      dt=0.5,
+      tspan=(0.0, 180.0),
+      progress=true,
+      progress_steps=5
+    )
+  end
+  sol = eval(s)
+  return "Hello from Julia by axios!"
 end
