@@ -24,13 +24,14 @@ RUN julia ./ENV.jl
 
 # ports
 EXPOSE 8081
+EXPOSE 8082
 
 # set up app environment
 ENV JULIA_DEPOT_PATH "/home/genie/.julia"
 ENV GENIE_ENV "dev"
 ENV GENIE_HOST "0.0.0.0"
 ENV PORT "8081"
-ENV WSPORT "8081"
+ENV WSPORT "8082"
 ENV EARLYBIND "true"
 
 # run app

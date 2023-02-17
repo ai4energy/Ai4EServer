@@ -22,17 +22,23 @@ struct Ai4ESimulatorLogger <: AbstractLogger
     min_level::LogLevel
     message_limits::Dict{Any,Int}
 end
+
 function Ai4ESimulatorLogger(stream::IO, min_level=LogLevel(-1))
     Ai4ESimulatorLogger(stream, min_level, Dict{Any,Int}())
 end
+
 function Ai4ESimulatorLogger(min_level=LogLevel(-1))
     Ai4ESimulatorLogger(closed_stream, min_level, Dict{Any,Int}())
 end
+
 function shouldlog(logger::Ai4ESimulatorLogger, level, _module, group, id)
     get(logger.message_limits, id, 1) > 0
 end
+
 min_enabled_level(logger::Ai4ESimulatorLogger) = logger.min_level
+
 global_logger(Ai4ESimulatorLogger())
+
 function handle_message(logger::Ai4ESimulatorLogger, level::LogLevel, message, _module, group, id,
     filepath, line; kwargs...)
     @nospecialize
