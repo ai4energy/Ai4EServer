@@ -6,10 +6,12 @@ import Ai4EMetaPSE: getscript
 module closureCommonJson
 using ModelingToolkit, DifferentialEquations
 using Ai4EComponentLib
+include("Ai4ESimulatorLogger.jl")
 end
 module closureModelJson
 using ModelingToolkit, DifferentialEquations
 using Ai4EComponentLib
+include("Ai4ESimulatorLogger.jl")
 end
 
 function calcu(jsonStrings::String)
