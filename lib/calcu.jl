@@ -11,6 +11,10 @@ end
 module closureModelJson
 using ModelingToolkit, DifferentialEquations
 using Ai4EComponentLib
+using Ai4EComponentLib.Electrochemistry
+using Ai4EComponentLib.ThermodynamicCycle
+using Ai4EComponentLib.AirPipeSim
+using Ai4EComponentLib.IncompressiblePipe
 include("Ai4ESimulatorLogger.jl")
 end
 
