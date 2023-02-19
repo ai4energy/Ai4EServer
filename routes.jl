@@ -2,16 +2,15 @@ using Genie.Router, Genie.Requests
 using JSON, Dates
 using HTTP, HTTP.WebSockets
 using Genie.Configuration
-# const CORS_RES_HEADERS = [
-#   "Access-Control-Allow-Origin" => "*",
-#   "Access-Control-Allow-Headers" => "*",
-#   "Access-Control-Allow-Methods" => "POST, GET, OPTIONS"
-# ]
+
+const CORS_RES_HEADERS = [
+  "Access-Control-Allow-Origin" => "*",
+  "Access-Control-Allow-Headers" => "*",
+  "Access-Control-Allow-Methods" => "POST, GET, OPTIONS"
+]
 
 Genie.config.cors_allowed_origins = ["*"]
-Genie.config.cors_headers = ["*"]
-Genie.config.cors_methods = ["POST", "GET", "OPTIONS"]
-Genie.config.cors_credentials = true
+Genie.config.cors_headers = Dict(CORS_RES_HEADERS)
 
 route("/") do
   serve_static_file("index.html")
@@ -22,6 +21,7 @@ route("/health", method=GET) do
 end
 
 route("/job", method=POST) do
+  @show string(now()) * "  /job to handle"
   rawpayload()
 end
 

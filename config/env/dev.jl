@@ -2,7 +2,7 @@ using Genie, Logging
 
 Genie.Configuration.config!(
   server_port                     = 8081,
-  server_host                     = "127.0.0.1",
+  server_host                     = "0.0.0.0",
   log_level                       = Logging.Info,
   log_to_file                     = false,
   server_handle_static_files      = true,
