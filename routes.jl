@@ -2,6 +2,7 @@ using Genie.Router, Genie.Requests
 using JSON, Dates
 using HTTP, HTTP.WebSockets
 using Genie.Configuration
+include("./lib/Ai4ESimulatorLogger.jl")
 
 const CORS_RES_HEADERS = [
   "Access-Control-Allow-Origin" => "*",
@@ -70,6 +71,7 @@ route("/api/getResult", method=GET) do
 end
 
 route("/api/modeljson", method=POST) do
+  @logmsg LogLevel(-1) "ODESystem" _id = :OrdinaryDiffEq status = "准备计算！" progress = "none" 
   error_response = Dict()
   results = Dict()
   try
@@ -79,9 +81,10 @@ route("/api/modeljson", method=POST) do
     (res, sol) = calcu_model(jsonString, name)
     results["status"] = string(sol.retcode)
     results["code"] = 200
-    # results["data"] = res
+    @show "Success!"
   catch e
-    @error "Something went wrong in the Julia code!" exception = (e, catch_backtrace())
+    # @show "Something went wrong in the Julia code!" exception = (e, catch_backtrace())
+    @show "Something went wrong in the Julia code! " * sprint(showerror, e)
     error_response["error"] = sprint(showerror, e)
     results["code"] = 404
   end
@@ -158,7 +161,6 @@ end
 
 route("/foo/car") do
   s = quote
-    include("./lib/Ai4ESimulatorLogger.jl")
     @logmsg LogLevel(-1) "ODESystem" _id = :OrdinaryDiffEq status = "正在加载科学计算库！" progress = "none"    #= none:1 =#
     sleep(1)
     using JSON
