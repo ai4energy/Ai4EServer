@@ -10,6 +10,7 @@ include("Ai4ESimulatorLogger.jl")
 end
 module closureModelJson
 using ModelingToolkit, DifferentialEquations
+using JSON
 using Ai4EComponentLib
 using Ai4EComponentLib.Electrochemistry
 using Ai4EComponentLib.ThermodynamicCycle
