@@ -84,6 +84,7 @@ route("/api/modeljson", method=POST) do
     @show "Success!"
   catch e
     # @show "Something went wrong in the Julia code!" exception = (e, catch_backtrace())
+    @logmsg LogLevel(-1) "ODESystem" _id = :OrdinaryDiffEq status = "计算出错！" progress = "none" 
     @show "Something went wrong in the Julia code! " * sprint(showerror, e)
     error_response["error"] = sprint(showerror, e)
     results["code"] = 404
@@ -161,6 +162,8 @@ end
 
 route("/foo/car") do
   s = quote
+    @logmsg LogLevel(-1) "ODESystem" _id = :OrdinaryDiffEq status = "准备计算！" progress = "none" 
+    sleep(1)
     @logmsg LogLevel(-1) "ODESystem" _id = :OrdinaryDiffEq status = "正在加载科学计算库！" progress = "none"    #= none:1 =#
     sleep(1)
     using JSON
