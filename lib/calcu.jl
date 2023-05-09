@@ -27,6 +27,7 @@ end
 
 function calcu_model(jsonStrings::String, name::String="Project_Name")
     s = getscript(generatecode(jsonStrings, ModelJson()))
+    @show s
     sol = closureModelJson.eval(s)
     res = closureModelJson.eval(solutionHandle(name))
     return (res, sol)
