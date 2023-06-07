@@ -13,11 +13,7 @@ const CORS_RES_HEADERS = [
 Genie.config.cors_allowed_origins = ["*"]
 Genie.config.cors_headers = Dict(CORS_RES_HEADERS)
 
-before("*") do
-  response.headers["Access-Control-Allow-Origin"] = "*"
-  response.headers["Access-Control-Allow-Headers"] = "*"
-  response.headers["Access-Control-Allow-Methods"] = "POST, GET, OPTIONS"
-end
+
 
 route("/") do
   serve_static_file("index.html")
