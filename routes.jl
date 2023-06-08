@@ -13,6 +13,8 @@ const CORS_RES_HEADERS = [
 Genie.config.cors_allowed_origins = ["*"]
 Genie.config.cors_headers = Dict(CORS_RES_HEADERS)
 
+
+
 route("/") do
   serve_static_file("index.html")
 end
